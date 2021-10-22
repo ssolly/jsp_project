@@ -16,8 +16,9 @@
 <body>
 	<!-- DB에 접근 후 저장하는 jsp파일 -->
 	<c:import url="../default/header.jsp" />
-	
-	<%
+
+	<%--
+		//java문법
 		MemberDTO dto = new MemberDTO();
 		dto.setId(request.getParameter("id"));
 		dto.setPwd(request.getParameter("pwd"));
@@ -31,8 +32,29 @@
 		} else {
 			out.print("<script>alert('회원가입에 실패하셨습니다');location.href='member_register.jsp';</script>");
 		}
-	%>
+	--%>
 		
+	<jsp:useBean id="dto" class="com.care.root.member.dto.MemberDTO"/>
+	<jsp:setProperty property="*" name="dto"/>
+	
+	<jsp:useBean id="dao" class="com.care.root.member.dao.MemberDAO"/>
+	<c:set var="result" value="${dao.register(dto) }" />
+	<c:choose>
+		<c:when test="${result == 1 }">
+			<script type="text/javascript">
+				alert("회원가입을 축하합니다");
+				location.href="${contextPath}/member/membership.jsp"
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script type="text/javascript">
+				alert("회원가입에 실패하셨습니다");
+				location.href="${contextPath}/member/member_register.jsp"
+			</script>
+		</c:otherwise>
+	</c:choose>
+	
+	
 	<c:import url="../default/footer.jsp" />
 </body>
 </html>
