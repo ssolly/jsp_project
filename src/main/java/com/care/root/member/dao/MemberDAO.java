@@ -69,4 +69,25 @@ public class MemberDAO {
 //		return 1;
 		
 	}
+	
+	public MemberDTO getMember(String userId) {
+		System.out.println("id : "  + userId);
+		String sql = "select * from jsp_member where id='"+userId+"'"; //sql문에서 string 값에는 '(작은따옴표) 필요
+		System.out.println(sql);
+		MemberDTO dto = null;
+		try {
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				dto = new MemberDTO();
+				dto.setId(rs.getString("id"));
+				dto.setPwd(rs.getString("pwd"));
+				dto.setName(rs.getString("name"));
+				dto.setAddr(rs.getString("addr"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
 }

@@ -24,7 +24,7 @@
 				<tr>
 					<td>${member.id }</td>
 					<td>${member.pwd }</td>
-					<td><a href="${contextPath }/member/member_info.jsp?id=${member.id}&pwd=${member.pwd}">${member.name }</a></td>
+					<td><a href="${contextPath }/member/member_info.jsp?id=${member.id}">${member.name }</a></td>
 					<td>${member.addr }</td>
 				</tr>
 			</c:forEach>
