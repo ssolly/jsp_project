@@ -20,7 +20,9 @@
 	<b>name</b> : ${mem.name }<br>
 	<b>addr</b> : ${mem.addr }<hr>
 	<button type="button" onclick="location.href='modify.jsp?id=${mem.id}'">수정</button>
-	<button type="button" onclick="">삭제</button>
+	
+	<c:set var="userId" value="${mem.id }" scope="session" />
+	<button type="button" onclick="location.href='delete.jsp'">삭제</button>
 	
 	<c:import url="../default/footer.jsp"/>
 </body>
