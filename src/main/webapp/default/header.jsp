@@ -9,18 +9,18 @@
 <title>jsp_project/default/header.jsp</title>
 <style type="text/css">
 	* { margin: 0; }
-	.wrap { width: 1000px; margin: auto; }
+	.wrap { width: 1000px; margin:0 auto; text-align:center;}
 	.header { width: 1000px; background-color: white; }
 	.navdiv{width:100%; background-color: #9E4545; }
 	nav{ background-color: #9E4545;width: 1000px; }
 	nav ul { list-style: none; display: flex; justify-content: flex-end; }
 	nav ul li { margin: 0 3px; padding: 10px 10px; }
 	nav ul li a { text-decoration: none; color: white; }
-	nav ul li a:hover { color: orange; padding-bottom: 3px; /* a태그 밑줄과 글씨 간격*/
-   						border-bottom: 1px solid orange; transition: all 0.25s; }
+	nav ul li a:hover { color: white; padding-bottom: 3px; /* a태그 밑줄과 글씨 간격*/
+   						border-bottom: 1px solid white; transition: all 0.25s; }
 	.title {/*오른, 아래, 번짐*/ text-shadow: 10px 10px 15px #D79D9D; font-size: 70pt;
    			text-align: center; margin-top: 0px; padding-bottom: 20px;
-   			color:#E66969; font-family:Gabriola; }
+   			color:#CA5252; font-family:Gabriola; }
 	.content{ margin-top: 50px; }
 </style> 
 </head> 

@@ -17,6 +17,7 @@
 .name {
 	text-align: right;
 }
+h3 {color:#702727;}
 </style>
 </head>
 <body>
