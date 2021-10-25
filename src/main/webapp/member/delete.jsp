@@ -15,7 +15,7 @@
 	<b>id(s)</b> : ${sessionScope.userId }<br>
 	
 	<jsp:useBean id="dao" class="com.care.root.member.dao.MemberDAO"/>
-	<c:set var="result" value=${dao.delete(userId) }/>
+	<c:set var="result" value="${dao.delete(userId) }"/>
 	
 	<c:choose>
 		<c:when test="${result==1 }">

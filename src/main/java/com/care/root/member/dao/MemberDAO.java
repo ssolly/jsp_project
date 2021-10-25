@@ -105,5 +105,17 @@ public class MemberDAO {
              e.printStackTrace();
 		 }
 		 return result;
-}
+	}
+	
+	public int delete(String userId) {
+		int result = 0;
+		String sql = "delete from jps_member where id='"+userId+"'";
+		try {
+			ps=con.prepareStatement(sql);
+			result=ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
