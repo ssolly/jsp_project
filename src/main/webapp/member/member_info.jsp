@@ -11,8 +11,8 @@
 <body>
 	<c:import url="../default/header.jsp"/>
 	
-	<h2>개인 정보</h2>
-	id : ${param.id }<br>
+	<h2>개인 정보</h2><br>
+	id : ${param.id }<hr>
 	<jsp:useBean id="dao" class="com.care.root.member.dao.MemberDAO"/>	<!-- 객체 생성 -->
 	<c:set var="mem" value="${dao.getMember(param.id) }"/>
 	<b>id</b> : ${mem.id }<br>

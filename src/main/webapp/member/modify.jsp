@@ -11,6 +11,17 @@
 <body>
 	<c:import url="../default/header.jsp"/>
 	
+	<jsp:useBean id="dao" class="com.care.root.member.dao.MemberDAO"/>	<!-- 객체 생성 -->
+	<c:set var="mem" value="${dao.getMember(param.id) }"/>
+	<b>아이디</b> : ${mem.id }<br>
+	
+	<form action="modify_save.jsp">
+	<b>비밀번호</b> : <input type="text" name="pwd" value="${mem.pwd }"><br>
+	<b>이름</b> : <input type="text" name="name" value="${mem.name }"><br>
+	<b>주소</b> : <input type="text" name="addr" value="${mem.addr }"><br>
+	<input type="submit" value="수정">
+	<input type="button" value="이전" onclick="history.back()">
+	</form>
 	
 	<c:import url="../default/footer.jsp"/>
 </body>
