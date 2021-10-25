@@ -10,14 +10,18 @@
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
+	
 	<h2>개인 정보</h2>
 	id : ${param.id }<br>
 	<jsp:useBean id="dao" class="com.care.root.member.dao.MemberDAO"/>	<!-- 객체 생성 -->
 	<c:set var="mem" value="${dao.getMember(param.id) }"/>
-	id : ${mem.id }<br>
-	pwd : ${mem.pwd }<br>
-	name : ${mem.name }<br>
-	addr : ${mem.addr }<br>
+	<b>id</b> : ${mem.id }<br>
+	<b>pwd</b> : ${mem.pwd }<br>
+	<b>name</b> : ${mem.name }<br>
+	<b>addr</b> : ${mem.addr }<hr>
+	<button type="button" onclick="location.href='modify.jsp?id=${mem.id}'">수정</button>
+	<button type="button" onclick="">삭제</button>
+	
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>
