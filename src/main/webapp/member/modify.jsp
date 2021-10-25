@@ -13,12 +13,13 @@
 	
 	<jsp:useBean id="dao" class="com.care.root.member.dao.MemberDAO"/>	<!-- 객체 생성 -->
 	<c:set var="mem" value="${dao.getMember(param.id) }"/>
-	<b>아이디</b> : ${mem.id }<br>
+	<!-- <b>아이디</b> : ${mem.id }<br>  -->
 	
 	<form action="modify_save.jsp">
+	<input type="hidden" name="id" value="${mem.id }"><br>
 	<b>비밀번호</b> : <input type="text" name="pwd" value="${mem.pwd }"><br>
-	<b>이름</b> : <input type="text" name="name" value="${mem.name }"><br>
-	<b>주소</b> : <input type="text" name="addr" value="${mem.addr }"><br>
+	<b>이&ensp;&ensp;&ensp; 름</b> : <input type="text" name="name" value="${mem.name }"><br>
+	<b>주&ensp;&ensp;&ensp; 소</b> : <input type="text" name="addr" value="${mem.addr }"><br>
 	<input type="submit" value="수정">
 	<input type="button" value="이전" onclick="history.back()">
 	</form>
