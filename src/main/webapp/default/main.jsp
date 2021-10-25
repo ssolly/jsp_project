@@ -7,7 +7,7 @@
 <title>jsp_project/default/main.jsp</title>
 <style type="text/css">
 .mainTable {
-	margin: auto;
+	margin: auto; margin-top:20px;
 }
 
 .mainTable td {

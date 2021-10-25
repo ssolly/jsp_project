@@ -118,4 +118,26 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
+	public int checkLogin(String userId, String userPwd) {
+		int result=0;
+		String sql = "select id,pwd from jsp_member where id='"+userId+"'";
+		try {
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				if (rs.getString("id").equals(userId)&&rs.getString("pwd").equals(userPwd)) {
+					result=1;
+				} else if (rs.getString("id").equals(userId)&& !(rs.getString("pwd").equals(userPwd))) {
+					result=2;
+				} else {
+					result=0;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(result);
+		return result;
+	}
 }

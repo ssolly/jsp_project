@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>jsp_project/member/membership.jsp</title>
 <style type="text/css">
-	table {margin:auto; margin-top: 50px; text-align:center;} 
+	table {margin:auto; margin-top: 30px; text-align:center;} 
 	table tr:nth-child(odd){background-color:#F6E8E8;}
 	table tr th{font-size:18px; color:#702727; background-color:#E4D1D1; padding:2px 25px;}
 	table tr td {color : #682323; padding:2px 25px; }
