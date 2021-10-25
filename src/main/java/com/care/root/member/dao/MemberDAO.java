@@ -109,7 +109,7 @@ public class MemberDAO {
 	
 	public int delete(String userId) {
 		int result = 0;
-		String sql = "delete from jps_member where id='"+userId+"'";
+		String sql = "delete from jsp_member where id='"+userId+"'";
 		try {
 			ps=con.prepareStatement(sql);
 			result=ps.executeUpdate();
