@@ -22,7 +22,7 @@
 	
 	<c:set var="result" value="${dao.modifySave(dto) }"/>
 	<c:choose>
-		<c:when test="${resut==1 }">
+		<c:when test="${result==1 }">
 			<script type="text/javascript">
 				alert('수정 성공');
 				location.href='member_info.jsp?id=${dto.getId()}'
