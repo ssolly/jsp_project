@@ -35,7 +35,16 @@
 				<li><a href="${contextPath }/default/main.jsp">HOME</a></li>
 				<li><a href="${contextPath }/member/membership.jsp">MEMBERSHIP</a></li>
 				<li><a href="${contextPath }/#">BOARD</a></li>
-				<li><a href="${contextPath }/login/login_main.jsp">LOGIN</a></li>
+				<li>
+					<c:choose>
+						<c:when test="${login_ing == null }">
+							<a href="${contextPath }/login/login_main.jsp">LOGIN</a>
+						</c:when>
+					<c:otherwise>
+						<a href="${contextPath }/login/logout.jsp">LOGOUT</a>
+					</c:otherwise>
+					</c:choose>
+				</li>
     		</ul>
 			</nav>
 		</div>

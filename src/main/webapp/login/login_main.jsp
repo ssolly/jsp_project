@@ -19,6 +19,15 @@
 <body>
 	<c:import url="../default/header.jsp"/>
 	<div class="wrap">
+	
+	<c:choose>
+		<c:when test="${login_ing == null }">
+		</c:when>
+		<c:otherwise>
+			${login_ing }님 환영합니다
+		</c:otherwise>
+	</c:choose>
+	
 		<form action="login.jsp" method="post">
 			<table>
 				<tr>
@@ -33,6 +42,7 @@
 				<tr>
 					<td colspan="3">
 						<label class="mem_reg" onclick="location.href='${contextPath}/member/member_register.jsp'">회원가입</label> &ensp; <label>아이디/비밀번호 찾기</label>
+						<!-- label안쓰고 바로 a href 사용해도 된다 -->
 					</td>
 				</tr>
 			</table>

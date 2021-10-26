@@ -16,10 +16,11 @@
 	<c:import url="../default/header.jsp" />
 	<c:set var="userId" value="${param.id }"/>
 	<c:set var="userPwd" value="${param.pwd }"/>
-	<jsp:useBean id="dao" class="com.care.root.member.dao.MemberDAO"/>
+	<jsp:useBean id="dao" class="com.care.root.login.dao.LoginDAO"/>
 	<c:set var="result" value="${dao.checkLogin(userId,userPwd)}" />
 	<c:choose>
 		<c:when test="${result == 1 }">
+			<c:set var="login_ing" value="${userId }" scope="session"/> <!-- 로그인 유지하기 위한 세션 생성 -->
 			<script type="text/javascript">
 				alert("${userId}님 환영합니다");
 				location.href="${contextPath}/default/main.jsp"
