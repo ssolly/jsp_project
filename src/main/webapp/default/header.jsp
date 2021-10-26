@@ -34,7 +34,7 @@
     		<ul>
 				<li><a href="${contextPath }/default/main.jsp">HOME</a></li>
 				<li><a href="${contextPath }/member/membership.jsp">MEMBERSHIP</a></li>
-				<li><a href="${contextPath }/#">BOARD</a></li>
+				<li><a href="${contextPath }/board/board_main.jsp">BOARD</a></li>
 				<li>
 					<c:choose>
 						<c:when test="${login_ing == null }">
