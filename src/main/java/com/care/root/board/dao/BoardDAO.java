@@ -104,7 +104,20 @@ public class BoardDAO {
 		return dto;
 	}
 	
-	
+	public void modify(String id, String name, String title, String content) {
+		String sql = "update test_board set name=?, title=?, content=? where id=?";
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, title);
+			ps.setString(3, content);
+			ps.setString(4, id);
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

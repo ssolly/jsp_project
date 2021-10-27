@@ -27,13 +27,14 @@
 	<c:set var="dto" value="${dao.contentView(param.id) }" />
 	
 	<form action="modify.jsp" method="post">
+	<input type="hidden" name="id" value="${dto.id }">
 		<table>
 			<tr>
 				<th>번호</th><td>${dto.id }</td>
 				<th>날짜</th><td>${dto.savedate }</td>
 			</tr>
 			<tr>
-				<th>작성자</th><td><input type="text" name="name" value="${dto.name }"></td>
+				<th>작성자</th><td><input type="text" readonly name="name" value="${dto.name }"></td>
 				<th>조회수</th><td>${dto.hit }</td>
 			</tr>
 			<tr>

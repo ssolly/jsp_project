@@ -10,8 +10,8 @@
 <style type="text/css">
 	table {margin:auto; margin-top: 30px; text-align:center;} 
 	table tr:nth-child(odd){background-color:#F6E8E8;}
-	table tr th{font-size:15px; color:#702727; background-color:#E4D1D1; padding:2px 25px;}
-	table tr td {color : #682323; padding:2px 25px; }
+	table tr th{font-size:14px; color:#702727; background-color:#E4D1D1; padding:2px 25px;}
+	table tr td {font-size:13px; color : #682323; padding:2px 25px; }
 	table tr td a{color:#702727;}
 	.longBox {width:200px;}
 	button {background-color:#D2B3B3; margin-top:10px;}
