@@ -12,6 +12,7 @@
 	table tr:nth-child(odd){background-color:#F6E8E8;}
 	table tr th{font-size:15px; color:#702727; background-color:#E4D1D1; padding:2px 25px;}
 	table tr td {color : #682323; padding:2px 25px; }
+	table tr td a{color:#702727;}
 	.longBox {width:200px;}
 	button {background-color:#D2B3B3; margin-top:10px;}
 </style>
@@ -31,10 +32,10 @@
 				<tr>
 					<td>${dto.id }</td>
 					<td>${dto.savedate }</td>
-					<td class="longBox">${dto.title  }</td>
+					<td class="longBox"><a href="content_view.jsp?id=${dto.id }">${dto.title  }</a></td>
 					<td>${dto.name }</td>
 					<td>${dto.hit }</td>
-					<td>${dto.groupid }</td>
+					<td>${dto.idgroup }</td>
 					<td>${dto.step }</td>
 					<td>${dto.indent }</td>
 				</tr>

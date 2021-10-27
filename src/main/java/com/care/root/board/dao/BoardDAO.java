@@ -51,9 +51,58 @@ public class BoardDAO {
 		return list;
 	}
 	
+	public void writeSave(String name, String title, String content) {
+		String sql=	"insert into test_board(id, name, title, content, idgroup, step, indent) "
+				+ "values(test_board_seq.nextval,?,?,?, test_board_seq.currval,0,0)";
+					//text_board_seq : 초기 값(0)을 가지고 있다가 nextval(+1) 값을 저장
+									   //currval : 현재의 (증가된)값을 가지고 옴
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, title);
+			ps.setString(3, content);
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
+	private void upHit(String num) {
+		String sql = "update test_board set hit=hit+1 where id="+num;
+		try {
+			ps=con.prepareStatement(sql);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
-	
+	public BoardDTO contentView(String num) {
+		upHit(num);
+		
+		String sql = "select * from test_board where id="+num;
+		BoardDTO dto = new BoardDTO();
+		
+		try {
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				dto.setId(rs.getInt("id"));
+				dto.setName(rs.getString("name"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setSavedate(rs.getTimestamp("savedate"));
+				dto.setHit(rs.getInt("hit"));
+				dto.setIdgroup(rs.getInt("idgroup"));
+				dto.setStep(rs.getInt("step"));
+				dto.setIndent(rs.getInt("indent"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
 	
 	
 	

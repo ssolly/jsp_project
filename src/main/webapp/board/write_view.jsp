@@ -11,11 +11,10 @@
 	form {margin-top:20px;}
 	table{margin:auto;}
 	form input{margin-top:10px; }
-	.box {width:80%;}
-	.titleBox{width:93%;}
-	table tr td {padding:4px 2px;}
+	.box {width:300px;}
+	table tr td {padding:4px 5px;}
 	table tr td b{color:#702727;}
-	form textarea{border-radius:5px; width:93%; height:170px; margin-top:8px;}
+	form textarea{border-radius:5px; width:98%; height:170px; margin-top:8px;}
 </style>
 </head>
 <body>
@@ -24,21 +23,22 @@
 		<form action="${contextPath }/board/write_save.jsp" method="post">
 			<table>
 				<tr>
-					<td><b>ID</b></td>
-					<td><input class="box" type="text" name="id"></td>
-					<td><b>BOARD PASSWORD</b></td>
-					<td> <input class="box" type="password" name="board_pwd"></td>
+					<td><b>NAME</b></td>
+					<td><input class="box" type="text" name="name"></td>
 				</tr>
 				<tr>
 					<td><b>TITLE</b></td>
-					<td colspan="3"><input class="titleBox" type="text" name="title"></td>
+					<td ><input class="box" type="text" name="title"></td>
 				</tr>
 				<tr>
 					<td><b>CONTENT</b></td>
-					<td colspan="3"><textarea name="content"></textarea></td>
+					<td><textarea name="content"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="4"><input type="submit" value="등록" style="background-color:#D2B3B3;"></td>
+					<td colspan="2"><input type="submit" value="등록" style="background-color:#D2B3B3; margin-left:100px;">
+					&ensp;&ensp;&ensp;
+					<input type="button" value="취소" 
+					 	   onclick="location.href='list.jsp'" style="background-color:#D2B3B3;"></td>
 				</tr>
 			</table>
 		</form>
