@@ -45,7 +45,7 @@
 			</tr>
 			<tr>
 				<td colspan="4"> <input type="submit" value="수정" class="btn">
-				<input type="button" value="삭제" onclick="location.href='delete.jsp'" class="btn">
+				<input type="button" value="삭제" onclick="location.href='delete.jsp?id=${dto.id}'" class="btn">
 				<input type="button" value="목록" onclick="location.href='list.jsp'" class="btn">
 				<input type="button" value="답변" onclick="location.href='reply.jsp'" class="btn"> </td>
 			</tr>
