@@ -18,6 +18,14 @@
 	form textarea{border-radius:5px; width:98%; height:170px; margin-top:8px;}
 	.btn {background-color:#D2B3B3;}
 </style>
+<script type="text/javascript">
+	function del() {
+		var re = confirm("삭제하시겠습니까?")
+		if(re==true) {
+			location.href="delete.jsp?id=${param.id}"
+		}
+	}
+</script>
 </head>
 <body>
 	<c:import url="../default/header.jsp" />
@@ -45,7 +53,7 @@
 			</tr>
 			<tr>
 				<td colspan="4"> <input type="submit" value="수정" class="btn">
-				<input type="button" value="삭제" onclick="location.href='delete.jsp?id=${dto.id}'" class="btn">
+				<input type="button" value="삭제" onclick="del()" class="btn">
 				<input type="button" value="목록" onclick="location.href='list.jsp'" class="btn">
 				<input type="button" value="답변" onclick="location.href='reply.jsp'" class="btn"> </td>
 			</tr>

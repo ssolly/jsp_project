@@ -121,6 +121,7 @@ public class BoardDAO {
 
 	public int delete(String id) {
 		int result=0;
+		System.out.println(id);
 		String sql = "delete from test_board where id="+id;
 		try {
 			ps=con.prepareStatement(sql);
