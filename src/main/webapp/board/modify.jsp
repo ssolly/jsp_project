@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>jsp_project/board/modify.jsp</title>
 </head>
 <body>
 

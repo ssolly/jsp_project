@@ -24,26 +24,64 @@ public class BoardDAO {
 		}
 	}
 	
-	public ArrayList<BoardDTO> getBoardList() {
-		System.out.println("getBoardList 호출");
-		
-		String sql = "select * from jsp_board";
+	public ArrayList<BoardDTO> list() {
+		String sql = "select * from test_board";
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 		try {
 			ps=con.prepareStatement(sql);
 			rs=ps.executeQuery();
 			while(rs.next()) {
 				BoardDTO dto = new BoardDTO();
-				dto.setId(rs.getString("id"));
-				dto.setBoard_pwd(rs.getString("board_pwd"));
+				dto.setId(rs.getInt("id"));
+				dto.setName(rs.getString("name"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
-				dto.setDate(rs.getString("date"));
+				dto.setSavedate(rs.getTimestamp("savedate"));
+				dto.setHit(rs.getInt("hit"));
+				dto.setIdgroup(rs.getInt("idgroup"));
+				dto.setStep(rs.getInt("step"));
+				dto.setIndent(rs.getInt("indent"));
+				
 				list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return list;
-	}	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	//jsp_board table 관련
+//	public ArrayList<BoardDTO> getBoardList() {
+//		System.out.println("getBoardList 호출");
+//		
+//		String sql = "select * from jsp_board";
+//		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
+//		try {
+//			ps=con.prepareStatement(sql);
+//			rs=ps.executeQuery();
+//			while(rs.next()) {
+//				BoardDTO dto = new BoardDTO();
+//				dto.setId(rs.getString("id"));
+//				dto.setBoard_pwd(rs.getString("board_pwd"));
+//				dto.setTitle(rs.getString("title"));
+//				dto.setContent(rs.getString("content"));
+//				dto.setDate(rs.getString("date"));
+//				list.add(dto);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return list;
+//	}	
 }
