@@ -15,6 +15,7 @@
 	table tr td a{color:#702727;}
 	.longBox {width:200px;}
 	button {background-color:#D2B3B3; margin-top:10px;}
+	.alink{color:#702727; font-size:12px;}
 </style>
 </head>
 <body>
@@ -22,13 +23,13 @@
 	<div class="wrap">
 	
 	<jsp:useBean id="dao" class="com.care.root.board.dao.BoardDAO"/>	
-
+	<c:set var="pc" value="${dao.pagingNum(param.start) }"/>
 		<table >
 			<tr>
 				<th>번호</th><th>날짜</th><th class="longBox">제목</th><th>작성자</th><th>조회수</th>
 				<th>groupid</th><th>step</th><th>indent</th>
 			</tr>
-			<c:forEach var="dto" items="${dao.list() }">
+			<c:forEach var="dto" items="${dao.list(pc.startPage,pc.endPage) }">
 				<tr>
 					<td>${dto.id }</td>
 					<td>${dto.savedate }</td>
@@ -43,7 +44,39 @@
 					<td>${dto.indent }</td>
 				</tr>
 			</c:forEach>	
-		</table> 
+		</table>
+		<!-- 이전이나 다음 버튼을 위해서 처리 -->
+		<c:choose>
+			<c:when test="${param.start == null }">
+				<c:set var="start" value="1"/>
+			</c:when>
+			<c:otherwise>
+				<c:set var="start" value="${param.start }"/>
+			</c:otherwise>
+		</c:choose>
+		
+		<c:choose>
+			<c:when test="${start>1 }" >
+				<button type="button" onclick="location.href='list.jsp?start=${start-1}'"> 이전</button>
+			</c:when>
+			<c:otherwise>
+				<button type="button" disabled> 이전</button>
+			</c:otherwise>
+		</c:choose>
+		
+		<c:forEach var="cnt" begin="1" end="${pc.totEndPage }" step="1">
+			<a href="list.jsp?start=${cnt }" class="alink">[${cnt }]</a>
+		</c:forEach>
+		
+		<c:choose>
+		<c:when test="${start>pc.totEndPage }" >
+			<button type="button" onclick="location.href='list.jsp?start=${start+1}'"> 다음</button>
+		</c:when>
+		<c:otherwise>
+			<button type="button" disabled> 다음</button>
+		</c:otherwise>
+		</c:choose>
+		<hr color="#F6E8E8" style="margin:auto;width:500px; margin-top:10px;">
 		<button type="button" onclick="location.href='${contextPath }/board/write_view.jsp'"> 작성</button>
 	
 	</div>

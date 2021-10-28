@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.care.root.board.dto.BoardDTO;
+import com.care.root.paging.PageCount;
 
 public class BoardDAO {
 
@@ -24,15 +25,22 @@ public class BoardDAO {
 		}
 	}
 	
-	public ArrayList<BoardDTO> list() {
+	public ArrayList<BoardDTO> list(int start,int end) {
 		//String sql = "select * from test_board";
 
 		//오라클 정렬 : 최신글이 위에 가기 위해 idgroup 내림차순 정렬, step은 오름차순 정렬
-		String sql = "select * from test_board order by idgroup desc, step asc";
+		//String sql = "select * from test_board order by idgroup desc, step asc";
+		System.out.println(start + ": " + end);
+		String sql= "select B.* from(select rownum rn, A.* from"
+				+ "(select * from test_board order by idgroup desc, step asc)A)B where rn between ? and ?";
 		
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 		try {
 			ps=con.prepareStatement(sql);
+	
+			ps.setInt(1, start);
+			ps.setInt(2, end);
+	
 			rs=ps.executeQuery();
 			while(rs.next()) {
 				BoardDTO dto = new BoardDTO();
@@ -181,8 +189,48 @@ public class BoardDAO {
 		}
 	}
 	
+	//글의 갯수만큼 카운트를 가지고 오는 메소드
+	public int getTotalPage() {
+		String sql = "select count(*) from test_board";
+		int totPage=0;
+		try {
+			ps=con.prepareStatement(sql);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				totPage=rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return totPage;
+	}
 	
-	
+	//연산코드
+	public PageCount pagingNum(int start) {
+		PageCount pc = new PageCount();
+		
+		if(start==0) {							//스타트 페이지의 설정이 없다면
+			start=1;							//보여줄 페이지 설정(첫번째 페이지)
+		}
+		
+		int pageNum = 3;						//페이지 별 글의 갯수
+		int totalPage = getTotalPage();			//글의 총 갯수
+		
+		int totEndPage = totalPage/pageNum;		//페이지 갯수
+		if(totEndPage % pageNum !=0 ) {
+			totEndPage = totEndPage+1;
+		}
+		
+		//list의 start와 end 값을 넣어주기 위한 계산 값
+		int endPage = start*pageNum;			//마지막 페이지
+		int startPage = endPage+1 - pageNum;	//시작 페이지를 맞춰주는 계산
+		
+		pc.setStartPage(startPage);
+		pc.setEndPage(endPage);
+		pc.setTotEndPage(totEndPage);
+		
+		return pc;
+	}
 	
 	
 //	//jsp_board table 관련
