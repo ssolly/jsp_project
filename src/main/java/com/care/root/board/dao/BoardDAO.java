@@ -25,7 +25,11 @@ public class BoardDAO {
 	}
 	
 	public ArrayList<BoardDTO> list() {
-		String sql = "select * from test_board";
+		//String sql = "select * from test_board";
+
+		//오라클 정렬 : 최신글이 위에 가기 위해 idgroup 내림차순 정렬, step은 오름차순 정렬
+		String sql = "select * from test_board order by idgroup desc, step asc";
+		
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 		try {
 			ps=con.prepareStatement(sql);
@@ -143,7 +147,22 @@ public class BoardDAO {
 //		}
 //	}
 	
+	public void replyShape(BoardDTO dto) {
+		String sql = "update test_board set step=step+1 where idgroup=? and step >?";
+										//이미 게시된 글의 step의 숫자에서 +1
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, dto.getIdgroup());
+			ps.setInt(2, dto.getStep());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void reply(BoardDTO dto) {
+		replyShape(dto);
+		
 		String sql = "insert into test_board(id,name,title,content,idgroup,step,indent) "
 				+ "values(test_board_seq.nextval,?,?,?,?,?,?)";
 		try {

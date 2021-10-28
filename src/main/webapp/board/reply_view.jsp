@@ -30,6 +30,7 @@
 			<input type="hidden" name="id" value="${dto.id }">
 			<input type="hidden" name="idgroup" value="${dto.idgroup }">
 			<input type="hidden" name="step" value="${dto.step }">
+			<input type="hidden" name="indent" value="${dto.indent }">
 			<input type="hidden" name="name" value="${dto.name }">
 
 			<table>

@@ -32,7 +32,10 @@
 				<tr>
 					<td>${dto.id }</td>
 					<td>${dto.savedate }</td>
-					<td class="longBox"><a href="content_view.jsp?id=${dto.id }">${dto.title  }</a></td>
+					<td class="longBox">
+					<c:forEach begin="1" end="${dto.indent }">└</c:forEach>
+					<a href="content_view.jsp?id=${dto.id }">${dto.title  }</a>
+					</td>
 					<td>${dto.name }</td>
 					<td>${dto.hit }</td>
 					<td>${dto.idgroup }</td>
