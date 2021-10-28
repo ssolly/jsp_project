@@ -32,7 +32,8 @@
 	<div class="wrap">
 	
 	<jsp:useBean id="dao" class="com.care.root.board.dao.BoardDAO" />
-	<c:set var="dto" value="${dao.contentView(param.id) }" />
+	<c:set var="dto" value="${dao.contentView(param.id,1) }" />
+	<!-- dao.contentView의 upHit로 인해 숫자(int) 추가 -->
 	
 	<form action="modify.jsp" method="post">
 	<input type="hidden" name="id" value="${dto.id }">
@@ -55,7 +56,7 @@
 				<td colspan="4"> <input type="submit" value="수정" class="btn">
 				<input type="button" value="삭제" onclick="del()" class="btn">
 				<input type="button" value="목록" onclick="location.href='list.jsp'" class="btn">
-				<input type="button" value="답변" onclick="location.href='reply.jsp'" class="btn"> </td>
+				<input type="button" value="답변" onclick="location.href='reply_view.jsp?id=${dto.id}'" class="btn"> </td>
 			</tr>
 		</table>
 	</form>

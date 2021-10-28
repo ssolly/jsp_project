@@ -78,8 +78,10 @@ public class BoardDAO {
 		}
 	}
 	
-	public BoardDTO contentView(String num) {
-		upHit(num);
+	public BoardDTO contentView(String num, int flag) {
+		if(flag==1) {
+			upHit(num);
+		}
 		
 		String sql = "select * from test_board where id="+num;
 		BoardDTO dto = new BoardDTO();
@@ -140,6 +142,27 @@ public class BoardDAO {
 //			e.printStackTrace();
 //		}
 //	}
+	
+	public void reply(BoardDTO dto) {
+		String sql = "insert into test_board(id,name,title,content,idgroup,step,indent) "
+				+ "values(test_board_seq.nextval,?,?,?,?,?,?)";
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, dto.getName());
+			ps.setString(2, dto.getTitle());
+			ps.setString(3, dto.getContent());
+			
+			ps.setInt(4, dto.getIdgroup());
+			ps.setInt(5, dto.getStep()+1);
+			ps.setInt(6, dto.getIndent()+1);
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	
 	
